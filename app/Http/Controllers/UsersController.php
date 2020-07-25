@@ -42,6 +42,11 @@ class UsersController extends Controller
         if ($validator->fails())
         {
           return redirect()->back()->withErrors($validator->errors())->withInput();
+          // redirect() : 特定ページへのリダイレクト
+          // back() : 例えば送信されたフォーム内容にエラーがある場合など、直前のページヘユーザーをリダイレクトさせる
+          // withErrors() : リクエストのバリデーションが失敗するかを確認した後、セッションにエラーメッセージをフラッシュデータとして保存する
+          // withInput() : 下のURLが良い。バリデーションエラーがあった時にフォームに値を持たせておく。
+          // https://qiita.com/zaburo/items/5c019d9062ddf1493d16#form%E3%81%AE%E5%80%A4%E3%82%92%E4%BF%9D%E6%8C%81old
         }
 
         $user = User::find($request->id);
